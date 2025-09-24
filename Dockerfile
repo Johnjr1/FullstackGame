@@ -9,7 +9,7 @@ COPY frontend/ .
 RUN npm run build
 
 # Stage 2: Build .NET backend
-FROM mcr.microsoft.com/dotnet/sdk:7.0 AS backend-build
+FROM mcr.microsoft.com/dotnet/sdk:9.0 AS backend-build
 WORKDIR /app/backend
 
 COPY backend/*.csproj ./
@@ -19,7 +19,7 @@ COPY backend/ ./
 RUN dotnet publish -c Release -o out
 
 # Stage 3: Final runtime image
-FROM mcr.microsoft.com/dotnet/aspnet:7.0
+FROM mcr.microsoft.com/dotnet/aspnet:9.0
 WORKDIR /app
 
 # Copy published backend output
@@ -35,4 +35,4 @@ ENV ASPNETCORE_URLS=http://+:${PORT:-80}
 EXPOSE ${PORT:-80}
 
 # Run the backend application
-ENTRYPOINT ["dotnet", "YourBackend.dll"]
+ENTRYPOINT ["dotnet", "GuessTheNumerAPI.dll"]
