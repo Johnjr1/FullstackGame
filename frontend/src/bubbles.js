@@ -121,14 +121,18 @@ class Bubbles {
         requestAnimationFrame(() => this.tick());
     }
 
-    drawParticle(particle) {
-        this.context.beginPath();
-        this.context.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
-        this.context.fillStyle = this.isLightTheme ? LIGHT_COLORS[0] : DARK_COLORS[0];
-        this.context.fill();
-        this.context.closePath();
-    }
+   drawParticle(particle) {
+    this.context.beginPath();
+    this.context.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
 
+    // Use different colors based on particle index for variety & theme
+    const colors = this.isLightTheme ? LIGHT_COLORS : DARK_COLORS;
+    const colorIndex = Math.floor(particle.radius) % colors.length;
+
+    this.context.fillStyle = colors[colorIndex];
+    this.context.fill();
+    this.context.closePath();
+}
     createParticles() {
         if (this.particles.length > 0) {
             return;

@@ -12,6 +12,11 @@ html, body {
   --color-button: rgb(0, 172, 132);
   --color-button-active: rgba(255, 255, 255, 0.6);
   --bg-gradient: linear-gradient(135deg, #141678 0%, #0c0e2f 100%);
+  
+  /* Hint for smoother repaint */
+  will-change: background;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 .dark {
@@ -21,9 +26,13 @@ html, body {
   --color-button: indigo;
   --color-button-active: rgba(0, 0, 0, 0.3);
   --bg-gradient: linear-gradient(135deg, #db6fff 0%, #871515 100%);
+  
+  /* Same hints */
+  will-change: background;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
-/* ======= Global Styles ======= */
 body {
   background: var(--bg-gradient);
   min-height: 100vh;
@@ -33,6 +42,10 @@ body {
   letter-spacing: 1.5px;
   color: var(--color-text);
   position: relative;
+  
+  /* Added for forcing repaint in some browsers */
+  /* We'll also do a JS force repaint on toggle */
+  transition: background 0.3s ease;
 }
 
 

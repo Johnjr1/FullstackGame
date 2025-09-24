@@ -47,15 +47,23 @@ function App() {
 
   const isGameOver = guesses.length >= maxAttempts || result === 'correct';
 
-  const handleThemeToggle = () => {
-    const newTheme = !isDarkMode;
-    setIsDarkMode(newTheme);
-    document.body.classList.remove('light', 'dark');
-    document.body.classList.add(newTheme ? 'dark' : 'light');
+ const handleThemeToggle = () => {
+  const newTheme = !isDarkMode;
+  setIsDarkMode(newTheme);
 
-    const event = new CustomEvent("themeSwitch", { detail: newTheme ? "dark" : "light" });
-    window.dispatchEvent(event);
-  };
+  document.body.classList.remove('light', 'dark');
+  document.body.classList.add(newTheme ? 'dark' : 'light');
+
+  // Force repaint hack to fix mobile gradient update issue:
+  document.body.style.display = 'none';
+  // Trigger reflow
+  void document.body.offsetHeight;
+  document.body.style.display = '';
+
+  // Dispatch event for bubbles
+  const event = new CustomEvent("themeSwitch", { detail: newTheme ? "dark" : "light" });
+  window.dispatchEvent(event);
+};
 
   useEffect(() => {
     document.body.classList.add('light');
