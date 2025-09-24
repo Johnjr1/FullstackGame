@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&display=swap');
+
+:root {
+  --color-heading: #f72585;
+}
+
+.bubble-title {
+  font-family: "Cherry Bomb One", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 15vw;
+  color: var(--color-heading);
+  text-align: center;
+  margin: 0.1em 0 0;
+  padding: 0;
+  position: relative;
+
+  /* All shadows now match the text color */
+  text-shadow:
+    0 1px 0 var(--color-heading),
+    0 2px 0 var(--color-heading),
+    0 3px 0 var(--color-heading),
+    0 4px 0 var(--color-heading),
+    0 5px 0 var(--color-heading),
+    0 6px 0 var(--color-heading),
+    0 7px 0 var(--color-heading),
+    0 8px 0 var(--color-heading),
+
+    0 0 5px var(--color-heading),
+    0 1px 3px var(--color-heading),
+    0 3px 5px var(--color-heading),
+    0 5px 10px var(--color-heading),
+    0 10px 10px var(--color-heading),
+    0 20px 20px var(--color-heading);
+}
+
+.bubble-title span {
+  display: inline-block;
+  margin-right: 2px;
+  user-select: none;
+
+  /* Optional: keep or remove this if it conflicts */
+  text-shadow:
+    -2px -2px 0 var(--color-heading),
+     2px -2px 0 var(--color-heading),
+    -2px  2px 0 var(--color-heading),
+     2px  2px 0 var(--color-heading);
+}
