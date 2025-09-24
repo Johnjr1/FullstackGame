@@ -27,7 +27,7 @@ html, body {
   --color-button: indigo;
   --color-button-active: rgba(0, 0, 0, 0.3);
   --bg-gradient: linear-gradient(135deg, #db6fff 0%, #871515 100%);
-  --bg-color: #871515; /* added fallback pink/dark red */
+  --bg-color: #d130bb; /* added fallback pink/dark red */
 
   /* Same hints */
   will-change: background;
