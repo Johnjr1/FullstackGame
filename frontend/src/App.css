@@ -12,7 +12,8 @@ html, body {
   --color-button: rgb(0, 172, 132);
   --color-button-active: rgba(255, 255, 255, 0.6);
   --bg-gradient: linear-gradient(135deg, #141678 0%, #0c0e2f 100%);
-  
+  --bg-color: #0c0e2f; /* added fallback color */
+
   /* Hint for smoother repaint */
   will-change: background;
   backface-visibility: hidden;
@@ -26,7 +27,8 @@ html, body {
   --color-button: indigo;
   --color-button-active: rgba(0, 0, 0, 0.3);
   --bg-gradient: linear-gradient(135deg, #db6fff 0%, #871515 100%);
-  
+  --bg-color: #871515; /* added fallback pink/dark red */
+
   /* Same hints */
   will-change: background;
   backface-visibility: hidden;
@@ -34,7 +36,12 @@ html, body {
 }
 
 body {
-  background: var(--bg-gradient);
+  background-color: var(--bg-color); /* added fallback */
+  background-image: var(--bg-gradient);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+
   min-height: 100vh;
   max-width: 100vw;
   margin: 0;
@@ -63,6 +70,7 @@ canvas {
   z-index: 1;
   width: 100%;
   height: 100dvh;
+  height: 100vh; /* added fallback for mobile browsers */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -420,5 +428,3 @@ li {
   box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
   border: 2px solid white;
 }
-
-
