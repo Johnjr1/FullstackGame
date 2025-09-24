@@ -4,14 +4,28 @@ using Microsoft.Extensions.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add before app.Build()
+// 1. Add services
 builder.Services.AddCors();
+builder.Services.AddControllers(); // Required for fallback routing
+builder.Services.AddRouting();
+builder.Services.AddSpaStaticFiles(config =>
+{
+    config.RootPath = "wwwroot"; // React build output path
+});
 
 var app = builder.Build();
 
-// Add after app = builder.Build();
+// 2. Middleware
 app.UseCors(policy => policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 
+if (!app.Environment.IsDevelopment())
+{
+    app.UseSpaStaticFiles();
+}
+
+app.UseRouting();
+
+// 3. API Endpoints
 int secretNumber = Random.Shared.Next(1, 101);
 int attemptCount = 0;
 
@@ -37,7 +51,7 @@ app.MapPost("/api/guess", async (HttpContext context) =>
     else if (attemptCount >= 5)
     {
         result = "GAME OVER";
-        correctNumberToReturn = secretNumber; // Show the correct number on game over
+        correctNumberToReturn = secretNumber;
         gameOver = true;
         attemptCount = 0;
         secretNumber = Random.Shared.Next(1, 101);
@@ -66,6 +80,10 @@ app.MapPost("/api/restart", () =>
     return Results.Ok(new { message = "Game restarted!", secretNumber });
 });
 
+// 4. Fallback to index.html for React routes
+app.MapFallbackToFile("index.html");
+
 app.Run();
 
+// DTO
 record GuessRequest(int Guess);
