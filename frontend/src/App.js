@@ -14,7 +14,7 @@ function App() {
   const handleGuess = () => {
     if (guesses.length >= maxAttempts) return;
 
-    fetch('http://localhost:5010/api/guess', {
+    fetch('http://localhost:8080/api/guess', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ guess: userGuess })
@@ -40,7 +40,7 @@ function App() {
     setCorrectNumber(null);
 
 
-    fetch('http://localhost:5010/api/restart', {
+    fetch('http://localhost:8080/api/restart', {
       method: 'POST'
     });
   };
