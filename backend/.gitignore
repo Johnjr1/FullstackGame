@@ -1,0 +1,44 @@
+## Build Results
+bin/
+obj/
+
+## User-specific files
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+
+## Mono Auto Generated Files
+mono_crash.*
+
+## VS Code
+.vscode/
+
+## Visual Studio
+*.vs/
+.vs/
+*.dbmdl
+*.bak
+
+## ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+## Publish results
+publish/
+AppPackages/
+BundleArtifacts/
+
+## Secrets & Config
+appsettings.Development.json
+appsettings.Local.json
+secrets.json
+
+## Logs
+*.log
+
+## Others
+*.swp
+*.tmp
+*.orig
+*.rej
+*.pid

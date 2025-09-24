@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/FullstackGame%3E/static/css/main.f188e934.css",
+    "main.js": "/FullstackGame%3E/static/js/main.01b07f03.js",
+    "static/js/453.96453769.chunk.js": "/FullstackGame%3E/static/js/453.96453769.chunk.js",
+    "index.html": "/FullstackGame%3E/index.html",
+    "main.f188e934.css.map": "/FullstackGame%3E/static/css/main.f188e934.css.map",
+    "main.01b07f03.js.map": "/FullstackGame%3E/static/js/main.01b07f03.js.map",
+    "453.96453769.chunk.js.map": "/FullstackGame%3E/static/js/453.96453769.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f188e934.css",
+    "static/js/main.01b07f03.js"
+  ]
+}
